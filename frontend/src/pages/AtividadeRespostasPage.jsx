@@ -1,27 +1,29 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import LayoutShell from '../components/LayoutShell'
-import ResponseCard from '../components/ResponseCard'
 import api from '../services/api'
 
 export default function AtividadeRespostasPage() {
   const { id } = useParams()
   const [respostas, setRespostas] = useState([])
-  const [nota, setNota] = useState({})
-  const [feedback, setFeedback] = useState({})
+  const [erro, setErro] = useState('')
 
-  const load = () => api.get(`/atividades/${id}/respostas/`).then((res) => setRespostas(res.data))
+  const load = () => {
+    setErro('')
+    api.get(`/atividades/${id}/respostas/`)
+      .then((res) => setRespostas(res.data))
+      .catch(() => setErro('Não foi possivel carregar as respostas da atividade.'))
+  }
 
   useEffect(() => {
     load()
   }, [id])
 
-  const salvarCorrecao = async (respostaId) => {
-    await api.patch(`/respostas/${respostaId}/`, {
-      nota: nota[respostaId],
-      feedback: feedback[respostaId] || '',
-    })
-    load()
+  const obterStatusResposta = (resposta) => {
+    if (resposta.nota !== null && resposta.nota !== undefined) {
+      return { className: 'corrigida', label: 'corrigida' }
+    }
+    return { className: 'respondida', label: 'pendente' }
   }
 
   return (
@@ -32,30 +34,52 @@ export default function AtividadeRespostasPage() {
         </Link>
       </div>
 
-      <div className="list-grid">
-        {respostas.map((resposta) => (
-          <ResponseCard key={resposta.id} resposta={resposta}>
-            <div className="inline-form">
-              <input
-                type="number"
-                min="0"
-                max="10"
-                step="0.1"
-                placeholder="Nota"
-                value={nota[resposta.id] ?? resposta.nota ?? ''}
-                onChange={(e) => setNota({ ...nota, [resposta.id]: e.target.value })}
-              />
-              <input
-                type="text"
-                placeholder="Feedback"
-                value={feedback[resposta.id] ?? resposta.feedback ?? ''}
-                onChange={(e) => setFeedback({ ...feedback, [resposta.id]: e.target.value })}
-              />
-              <button type="button" onClick={() => salvarCorrecao(resposta.id)}>Salvar correção</button>
-            </div>
-          </ResponseCard>
-        ))}
-      </div>
+      {erro ? <p className="error-box">{erro}</p> : null}
+      {!erro && !respostas.length ? <p className="info-box">Nenhuma resposta enviada ainda.</p> : null}
+
+      {respostas.length ? (
+        <div className="table-wrap">
+          <table className="activities-table">
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Enviada em</th>
+                <th className="status-column">Nota</th>
+                <th className="status-column">Status</th>
+                <th className="status-column">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              {respostas.map((resposta) => {
+                const status = obterStatusResposta(resposta)
+                return (
+                  <tr key={resposta.id}>
+                    <td>
+                      <Link className="table-title-link" to={`/professor/atividades/${id}/respostas/${resposta.id}`}>
+                        {resposta.aluno_nome || '-'}
+                      </Link>
+                    </td>
+                    <td>{new Date(resposta.enviada_em).toLocaleString('pt-BR')}</td>
+                    <td className="status-column">
+                      {resposta.nota !== null && resposta.nota !== undefined
+                        ? String(resposta.nota).replace('.', ',')
+                        : '-'}
+                    </td>
+                    <td className="status-column">
+                      <span className={`badge ${status.className}`}>{status.label}</span>
+                    </td>
+                    <td className="status-column">
+                      <Link className="secondary-link" to={`/professor/atividades/${id}/respostas/${resposta.id}`}>
+                        Ver resposta
+                      </Link>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
     </LayoutShell>
   )
 }

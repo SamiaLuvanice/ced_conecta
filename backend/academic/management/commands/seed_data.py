@@ -134,7 +134,9 @@ class Command(BaseCommand):
             alunos_que_ja_responderam = set(respostas_existentes.values_list('aluno_id', flat=True))
 
             alunos_disponiveis = [
-                aluno_turma for aluno_turma in alunos_turma if aluno_turma.id not in alunos_que_ja_responderam
+                aluno_turma
+                for aluno_turma in alunos_turma
+                if aluno_turma.id not in alunos_que_ja_responderam and aluno_turma.email != 'joao@cedconecta.com'
             ]
             respostas_faltantes = max(respostas_minimas_por_atividade - total_respostas_existentes, 0)
 

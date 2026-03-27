@@ -72,11 +72,11 @@ export default function CriarAtividadePage() {
     <LayoutShell title={tituloPagina}>
       <form className="card form-card" onSubmit={handleSubmit}>
         <label>
-          Titulo
+          Título
           <input value={form.titulo} onChange={(e) => setForm({ ...form, titulo: e.target.value })} required disabled={loading} />
         </label>
         <label>
-          Descricao
+          Descrição
           <textarea rows="5" value={form.descricao} onChange={(e) => setForm({ ...form, descricao: e.target.value })} required disabled={loading} />
         </label>
         <label>
@@ -91,10 +91,15 @@ export default function CriarAtividadePage() {
         <label>
           Data de entrega
           <input type="date" value={form.data_entrega} onChange={(e) => setForm({ ...form, data_entrega: e.target.value })} required disabled={loading} />
-          <small className="muted">Prazo final sera 23:59 do dia selecionado.</small>
+          <small className="muted">Prazo final será 23:59 do dia selecionado.</small>
         </label>
         {error ? <div className="error-box">{error}</div> : null}
-        <button type="submit" disabled={loading || !form.turma_id}>{editando ? 'Salvar alteracoes' : 'Salvar atividade'}</button>
+        <div className="actions-row">
+          <button type="button" className="secondary-button" onClick={() => navigate('/professor/atividades')}>
+            Cancelar
+          </button>
+          <button type="submit" disabled={loading || !form.turma_id}>{editando ? 'Salvar alteracoes' : 'Salvar atividade'}</button>
+        </div>
       </form>
     </LayoutShell>
   )

@@ -1,5 +1,7 @@
 # Ced Conecta
 
+Conectando professores e alunos em um fluxo simples de criação, entrega e correção de atividades.
+
 Ced Conecta é uma plataforma web educacional para gerenciamento de atividades entre professores e alunos. O projeto foi pensado como um MVP funcional para apoiar o ciclo completo de atividades escolares: criação, envio de respostas, correção e devolutiva.
 
 ## Proposta do projeto

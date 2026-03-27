@@ -31,6 +31,8 @@ export default function ProfessorAtividadesPage() {
   )
 
   const totalPaginas = Math.max(1, Math.ceil(atividadesOrdenadas.length / ITENS_POR_PAGINA))
+  const isPrimeiraPagina = paginaAtual <= 1
+  const isUltimaPagina = paginaAtual >= totalPaginas
   const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA
   const fim = inicio + ITENS_POR_PAGINA
   const atividadesPaginadas = atividadesOrdenadas.slice(inicio, fim)
@@ -124,7 +126,7 @@ export default function ProfessorAtividadesPage() {
           <button
             type="button"
             className="secondary-button"
-            disabled={paginaAtual === 1}
+            disabled={isPrimeiraPagina}
             onClick={() => setPaginaAtual((prev) => Math.max(1, prev - 1))}
           >
             Anterior
@@ -149,7 +151,7 @@ export default function ProfessorAtividadesPage() {
           <button
             type="button"
             className="secondary-button"
-            disabled={paginaAtual === totalPaginas}
+            disabled={isUltimaPagina}
             onClick={() => setPaginaAtual((prev) => Math.min(totalPaginas, prev + 1))}
           >
             Próxima

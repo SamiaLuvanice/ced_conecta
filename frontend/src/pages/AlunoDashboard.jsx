@@ -20,6 +20,9 @@ export default function AlunoDashboard() {
   const totalRespondidas = respostas.length
   const totalAtividades = atividades.length
   const totalPendentesResposta = Math.max(totalAtividades - totalRespondidas, 0)
+  const textoPendencias = totalPendentesResposta === 1
+    ? 'atividade para responder'
+    : 'atividades para responder'
 
   const percentualRespondidas = totalAtividades > 0
     ? Math.round((totalRespondidas / totalAtividades) * 100)
@@ -50,7 +53,7 @@ export default function AlunoDashboard() {
         <div>
           <h3>{saudacao}, {user?.nome || 'aluno(a)'}</h3>
           <p className="dashboard-hero-sub">
-            Você tem <strong>{totalPendentesResposta}</strong> atividades para responder.
+            Você tem <strong>{totalPendentesResposta}</strong> {textoPendencias}.
           </p>
         </div>
       </section>

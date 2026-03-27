@@ -35,7 +35,10 @@ export default function LoginPage() {
               <circle cx="12" cy="19" r="1.5" fill="white" />
             </svg>
           </span>
-          <h1>Ced Conecta</h1>
+          <div className="login-brand-text">
+            <h1>Ced Conecta</h1>
+            <p className="login-slogan">Ensinar, aprender e evoluir em conexão.</p>
+          </div>
         </div>
         <p className="muted">Entre com seu e-mail e senha.</p>
         <label>
