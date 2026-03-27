@@ -62,7 +62,7 @@ export default function ProfessorTurmasPage() {
             <thead>
               <tr>
                 <th>Turma</th>
-                <th>Código</th>
+                <th>Matéria</th>
                 <th style={{ textAlign: 'center' }}>Alunos</th>
                 <th style={{ textAlign: 'center' }}>Atividades</th>
               </tr>
@@ -75,7 +75,7 @@ export default function ProfessorTurmasPage() {
                       {turma.nome}
                     </Link>
                   </td>
-                  <td>{turma.codigo}</td>
+                  <td>{turma.descricao}</td>
                   <td style={{ textAlign: 'center' }}>{turma.alunos_count || 0}</td>
                   <td style={{ textAlign: 'center' }}>{turma.totalAtividades}</td>
                 </tr>

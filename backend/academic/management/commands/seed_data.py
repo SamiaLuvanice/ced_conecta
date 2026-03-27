@@ -27,10 +27,10 @@ class Command(BaseCommand):
             turmas.append(turma)
 
         professor, created = User.objects.get_or_create(
-            email='ana@cedconecta.com',
+            email='maxwell@cedconecta.com',
             defaults={
-                'username': 'ana.professora',
-                'nome': 'Ana Professora',
+                'username': 'maxwell.professor',
+                'nome': 'Maxwell Alves Teixeira',
                 'perfil': 'PROFESSOR',
                 'is_staff': True,
             }
@@ -40,10 +40,10 @@ class Command(BaseCommand):
             professor.save()
 
         aluno, created = User.objects.get_or_create(
-            email='joao@cedconecta.com',
+            email='vagna@cedconecta.com',
             defaults={
-                'username': 'joao.aluno',
-                'nome': 'Joao Aluno',
+                'username': 'vagna.lima',
+                'nome': 'Vagna Brito de Lima',
                 'perfil': 'ALUNO',
                 'turma': turmas[0],
             }
@@ -136,7 +136,7 @@ class Command(BaseCommand):
             alunos_disponiveis = [
                 aluno_turma
                 for aluno_turma in alunos_turma
-                if aluno_turma.id not in alunos_que_ja_responderam and aluno_turma.email != 'joao@cedconecta.com'
+                if aluno_turma.id not in alunos_que_ja_responderam and aluno_turma.email != 'vagna@cedconecta.com'
             ]
             respostas_faltantes = max(respostas_minimas_por_atividade - total_respostas_existentes, 0)
 

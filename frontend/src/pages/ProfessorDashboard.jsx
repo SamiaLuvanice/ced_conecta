@@ -13,6 +13,8 @@ export default function ProfessorDashboard() {
   const [loading, setLoading] = useState(true)
   const [erro, setErro] = useState('')
 
+  const primeiroNome = (user?.nome || '').trim().split(/\s+/)[0] || 'professor(a)'
+
   useEffect(() => {
     const carregar = async () => {
       setLoading(true)
@@ -83,7 +85,7 @@ export default function ProfessorDashboard() {
     <LayoutShell title="Dashboard do professor">
       <section className="dashboard-hero">
         <div>
-          <h3>{saudacao}, {user?.nome || 'professor(a)'}</h3>
+          <h3>{saudacao}, {primeiroNome}</h3>
           <p className="dashboard-hero-sub">
             Você tem <strong>{loading ? '...' : totalPendentesCorrecao}</strong> {textoPendencias} e{' '}
             <strong>{loading ? '...' : atividadesVencendo48h}</strong> {textoAtividades}.

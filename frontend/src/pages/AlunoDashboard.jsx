@@ -8,6 +8,8 @@ export default function AlunoDashboard() {
   const [atividades, setAtividades] = useState([])
   const [respostas, setRespostas] = useState([])
 
+  const primeiroNome = (user?.nome || '').trim().split(/\s+/)[0] || 'aluno(a)'
+
   useEffect(() => {
     api.get('/me/atividades').then((res) => setAtividades(res.data))
     api.get('/me/respostas').then((res) => setRespostas(res.data))
@@ -51,7 +53,7 @@ export default function AlunoDashboard() {
     <LayoutShell title="Dashboard do aluno">
       <section className="dashboard-hero">
         <div>
-          <h3>{saudacao}, {user?.nome || 'aluno(a)'}</h3>
+          <h3>{saudacao}, {primeiroNome}</h3>
           <p className="dashboard-hero-sub">
             Você tem <strong>{totalPendentesResposta}</strong> {textoPendencias}.
           </p>

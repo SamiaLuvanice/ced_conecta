@@ -119,14 +119,14 @@ Serviços expostos:
 
 ## Contas de teste
 
-### Professora
+### Professor
 
-- e-mail: ana@cedconecta.com
+- e-mail: maxwell@cedconecta.com
 - senha: 123456
 
-### Aluno
+### Aluna
 
-- e-mail: joao@cedconecta.com
+- e-mail: vagna@cedconecta.com
 - senha: 123456
 
 ## Endpoints principais

@@ -53,8 +53,8 @@ export default function LoginPage() {
         <button type="submit" disabled={loading}>{loading ? 'Entrando...' : 'Entrar'}</button>
         <div className="demo-box">
           <strong>Contas de teste</strong>
-          <span>Professora: ana@cedconecta.com / 123456</span>
-          <span>Aluno: joao@cedconecta.com / 123456</span>
+          <span>Professor: maxwell@cedconecta.com / 123456</span>
+          <span>Aluna: vagna@cedconecta.com / 123456</span>
         </div>
       </form>
     </div>
