@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  DeadlineIcon
+} from '../components/DashboardIcons'
 import LayoutShell from '../components/LayoutShell'
 import { useAuth } from '../context/AuthContext'
 import api from '../services/api'
@@ -43,6 +46,14 @@ export default function ProfessorDashboard() {
     return prazo >= agora && prazo <= limite48h
   }).length
 
+  const textoPendencias = totalPendentesCorrecao === 1
+    ? 'pendência de correção'
+    : 'pendências de correção'
+
+  const textoAtividades = atividadesVencendo48h === 1
+    ? 'atividade vencendo nas próximas 48h'
+    : 'atividades vencendo nas próximas 48h'
+
   const atividadeFoco = [...atividades]
     .filter((atividade) => (atividade.total_pendentes_correcao || 0) > 0)
     .sort((a, b) => {
@@ -60,14 +71,22 @@ export default function ProfessorDashboard() {
     return 'low'
   }
 
+  const calcularPercentualCorrigido = (atividadeFoco) => {
+    if (!atividadeFoco) return 0
+    const total = atividadeFoco.total_respostas || 0
+    const pendentes = atividadeFoco.total_pendentes_correcao || 0
+    if (total === 0) return 0
+    return Math.round(((total - pendentes) / total) * 100)
+  }
+
   return (
     <LayoutShell title="Dashboard do professor">
       <section className="dashboard-hero">
         <div>
           <h3>{saudacao}, {user?.nome || 'professor(a)'}</h3>
           <p className="dashboard-hero-sub">
-            Você tem <strong>{loading ? '...' : totalPendentesCorrecao}</strong> pendências de correção e{' '}
-            <strong>{loading ? '...' : atividadesVencendo48h}</strong> atividades vencendo nas próximas 48h.
+            Você tem <strong>{loading ? '...' : totalPendentesCorrecao}</strong> {textoPendencias} e{' '}
+            <strong>{loading ? '...' : atividadesVencendo48h}</strong> {textoAtividades}.
           </p>
         </div>
       </section>
@@ -114,21 +133,35 @@ export default function ProfessorDashboard() {
                 <div className="prioridade-corpo">
                   <div className="prioridade-topo">
                     <h4>{atividadeFoco.titulo}</h4>
+                    <div className="prioridade-meta">
+                      <span className="response-badge pending prioridade-badge">
+                        {atividadeFoco.total_pendentes_correcao || 0} pendentes
+                      </span>
+                      <span className="prioridade-chip">
+                        <strong>Turma:</strong> {atividadeFoco.turma?.nome || '-'}
+                      </span>
+                      <span className="prioridade-chip">
+                        <DeadlineIcon size={14} />
+                        {new Date(atividadeFoco.data_entrega).toLocaleDateString('pt-BR')}
+                      </span>
+                    </div>
                   </div>
-                  <span className="response-badge pending prioridade-badge">
-                    {atividadeFoco.total_pendentes_correcao || 0} pendentes
-                  </span>
 
-                  <div className="prioridade-meta">
-                    <span className="prioridade-chip">Turma: {atividadeFoco.turma?.nome || '-'}</span>
-                    <span className="prioridade-chip">Entrega: {new Date(atividadeFoco.data_entrega).toLocaleDateString('pt-BR')}</span>
+                  <div className="prioridade-progress">
+                    <div className="prioridade-progress-label">
+                      <span>Progresso de correção</span>
+                      <strong>{calcularPercentualCorrigido(atividadeFoco)}%</strong>
+                    </div>
+                    <div className="prioridade-progress-track">
+                      <div
+                        className={`prioridade-progress-fill ${classeUrgencia(atividadeFoco.total_pendentes_correcao || 0)}`}
+                        style={{
+                          width: `${calcularPercentualCorrigido(atividadeFoco)}%`,
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="prioridade-acoes">
-                  <Link className="primary-link prioridade-cta" to={`/professor/atividades/${atividadeFoco.id}/respostas`}>
-                    Corrigir agora
-                  </Link>
                 </div>
               </article>
             </div>

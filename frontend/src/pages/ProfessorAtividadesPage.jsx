@@ -78,7 +78,7 @@ export default function ProfessorAtividadesPage() {
             </select>
           </div>
         </div>
-        <Link className="primary-link toolbar-create" to="/professor/atividades/nova">Nova atividade</Link>
+        <Link className="primary-link toolbar-create" to="/professor/atividades/nova"> Nova atividade</Link>
       </section>
 
       {!atividadesOrdenadas.length ? (

@@ -33,10 +33,6 @@ class Atividade(models.Model):
         if self.professor.perfil != 'PROFESSOR':
             raise ValidationError('A atividade deve pertencer a um professor.')
 
-    @property
-    def prazo_encerrado(self):
-        return timezone.now() > self.data_entrega
-
     def __str__(self):
         return self.titulo
 

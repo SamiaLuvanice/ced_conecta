@@ -105,18 +105,14 @@ class AtividadeSerializer(serializers.ModelSerializer):
 class RespostaListSerializer(serializers.ModelSerializer):
     aluno_nome = serializers.CharField(source='aluno.nome', read_only=True)
     atividade_titulo = serializers.CharField(source='atividade.titulo', read_only=True)
-    pode_editar = serializers.SerializerMethodField()
 
     class Meta:
         model = Resposta
         fields = (
             'id', 'atividade', 'atividade_titulo', 'aluno', 'aluno_nome', 'texto_resposta',
-            'nota', 'feedback', 'enviada_em', 'atualizada_em', 'pode_editar'
+            'nota', 'feedback', 'enviada_em', 'atualizada_em'
         )
         read_only_fields = fields
-
-    def get_pode_editar(self, obj):
-        return timezone.now() <= obj.atividade.data_entrega
 
 
 class RespostaCreateSerializer(serializers.ModelSerializer):

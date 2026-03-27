@@ -60,24 +60,6 @@ ced-conecta/
 └── README.md
 ```
 
-## Configuração de ambiente
-
-Este projeto usa variáveis de ambiente para separar configuração de código.
-
-### Backend (Django)
-
-Arquivo de exemplo: `backend/.env.example`
-
-- DJANGO_SECRET_KEY: chave secreta da aplicação
-- DJANGO_DEBUG: 1 para desenvolvimento, 0 para produção
-- DJANGO_ALLOWED_HOSTS: hosts permitidos separados por vírgula
-
-### Frontend (React/Vite)
-
-Arquivo de exemplo: `frontend/.env.example`
-
-- VITE_API_URL: URL base da API consumida pelo frontend
-
 ### Como preparar no ambiente local
 
 1. Copie os exemplos para arquivos locais:
