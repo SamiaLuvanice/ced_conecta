@@ -1,0 +1,43 @@
+.page-header, .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section-tools {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.activities-toolbar {
+  align-items: flex-end;
+}
+
+.toolbar-left {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: grid;
+  gap: 6px;
+}
+
+.toolbar-create {
+  min-width: 180px;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #365d69;
+}
+
+.filter-select {
+  min-width: 220px;
+}

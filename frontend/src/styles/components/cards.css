@@ -1,0 +1,45 @@
+.login-card, .card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(12, 28, 61, 0.08);
+}
+
+.response-card, .form-card {
+  padding: 20px;
+  border: 1px solid rgba(20, 67, 76, 0.08);
+  box-shadow: 0 14px 26px rgba(8, 42, 48, 0.08);
+}
+
+.form-card {
+  display: grid;
+  gap: 16px;
+}
+
+.form-card label {
+  gap: 10px;
+}
+
+.form-card small.muted {
+  display: block;
+  margin-top: 4px;
+}
+
+.response-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-header, .activity-footer, .actions-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.activity-header .badge {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+@media (min-width: 760px) {
+  .dashboard-hero {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .dashboard-duo {
+    grid-template-columns: minmax(240px, 1fr) minmax(0, 3fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .atividade-prioridade {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .atividade-detalhe-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .atividade-info-card,
+  .atividade-resumo-card-layout {
+    padding: 16px;
+  }
+
+  .atividade-metadata-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .atividade-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .atividade-acoes-top {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 6px;
+  }
+
+  .atividade-table-label {
+    width: 120px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .atividade-table-value {
+    padding: 10px 12px;
+  }
+
+  .resposta-progress-row {
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .resposta-progress-track {
+    height: 8px;
+  }
+}

@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f7fafb;
+}
+
+a { text-decoration: none; }
+
+button, input, textarea, select { font: inherit; }
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #cfd8e7;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #236e73;
+  box-shadow: 0 0 0 4px rgba(35, 110, 115, 0.18);
+}

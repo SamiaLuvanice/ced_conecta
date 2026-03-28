@@ -1,0 +1,25 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+  background: #f7fafb;
+  overflow: hidden;
+}
+
+.content {
+  padding: 32px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.content h2,
+.content h3 {
+  color: #13343b;
+}
+
+.list-grid,
+.turmas-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}

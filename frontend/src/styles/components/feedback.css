@@ -1,0 +1,11 @@
+.error-box, .info-box, .demo-box {
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.error-box { background: #ffe6e6; color: #a22727; }
+.info-box, .demo-box {
+  background: linear-gradient(130deg, rgba(249, 70, 0, 0.1), rgba(253, 125, 0, 0.12), rgba(77, 190, 193, 0.1), rgba(32, 171, 69, 0.12));
+  color: #204853;
+}
+.demo-box { display: grid; gap: 6px; }

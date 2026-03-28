@@ -1,0 +1,18 @@
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: linear-gradient(130deg, rgba(249, 70, 0, 0.14), rgba(253, 125, 0, 0.16), rgba(77, 190, 193, 0.14), rgba(32, 171, 69, 0.16));
+  color: #11474a;
+}
+
+.badge.corrigida { background: #e7f8ee; color: #0c7a3e; }
+.badge.aberta { background: #e7f8ee; color: #0c7a3e; }
+.badge.respondida { background: #fff4dd; color: #9c6a00; }
+.badge.nao_respondida { background: #ffe7e7; color: #b53333; }
+.badge.prazo_encerrado { background: #ffe7e7; color: #b53333; }
+.badge.profile {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f4fefe;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+}

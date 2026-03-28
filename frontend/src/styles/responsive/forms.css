@@ -1,0 +1,18 @@
+@media (max-width: 900px) {
+  .correction-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .response-correction-form {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .response-correction-form .nota-input {
+    max-width: 160px;
+  }
+
+  .response-correction-form .save-correction-button {
+    width: 100%;
+  }
+}

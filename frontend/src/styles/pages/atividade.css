@@ -1,0 +1,99 @@
+.atividade-detalhe-layout {
+  display: grid;
+  gap: 16px;
+}
+
+.atividade-detalhe-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.atividade-info-card,
+.atividade-resumo-card-layout {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(20, 67, 76, 0.12);
+  background: #ffffff;
+}
+
+.atividade-card-header {
+  display: grid;
+  gap: 4px;
+}
+
+.atividade-card-header h3 {
+  margin: 0;
+  color: #163e48;
+  font-size: 1.03rem;
+}
+
+.atividade-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.atividade-acoes-top {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(77, 190, 193, 0.2);
+}
+
+.atividade-table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+}
+
+.atividade-detalhe-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.atividade-detalhe-table thead th {
+  border-bottom: 1px solid rgba(20, 67, 76, 0.1);
+  text-align: left;
+}
+
+.atividade-detalhe-table tbody tr {
+  border-bottom: 1px solid rgba(20, 67, 76, 0.1);
+}
+
+.atividade-detalhe-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.atividade-detalhe-table tbody tr:hover {
+  background: #f8fcfc;
+}
+
+.atividade-table-label {
+  padding: 14px 16px;
+  width: 160px;
+  font-weight: 600;
+  color: #254d59;
+  font-size: 0.95rem;
+  background: #f4fbfb;
+  vertical-align: top;
+}
+
+.atividade-table-value {
+  padding: 14px 16px;
+  color: #1f324f;
+  vertical-align: top;
+}
+
+.atividade-table-head-value {
+  font-weight: 700;
+  color: #254d59;
+  background: #f4fbfb;
+}

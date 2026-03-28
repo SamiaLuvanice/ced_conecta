@@ -1,0 +1,81 @@
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(20, 67, 76, 0.1);
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.activities-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.activities-table th,
+.activities-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(20, 67, 76, 0.1);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.activities-table th {
+  color: #254d59;
+  font-size: 0.9rem;
+  background: #f4fbfb;
+}
+
+.activities-table tbody tr:hover {
+  background: #f8fcfc;
+}
+
+.activities-table th.status-column,
+.activities-table td.status-column {
+  text-align: center;
+}
+
+.activities-table th.count-column,
+.activities-table td.count-column {
+  text-align: center;
+}
+
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.page-button {
+  min-width: 36px;
+  border: 1px solid rgba(77, 190, 193, 0.35);
+  border-radius: 10px;
+  padding: 6px 10px;
+  background: #f4fbfb;
+  color: #1e4d57;
+  cursor: pointer;
+}
+
+.page-button.active {
+  background: #dff4f3;
+  border-color: rgba(36, 128, 130, 0.48);
+  font-weight: 700;
+}
+
+.table-title-link {
+  color: #13484c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.table-title-link:hover {
+  text-decoration: underline;
+}

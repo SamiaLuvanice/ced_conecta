@@ -1,0 +1,33 @@
+.actions-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.actions-grid .primary-link,
+.actions-grid .secondary-link {
+  min-width: 220px;
+}
+
+.muted {
+  color: #66748e;
+}
+
+.skeleton-block {
+  min-height: 180px;
+  background: linear-gradient(90deg, #f4f7fb 0%, #edf3f9 35%, #f4f7fb 70%);
+  background-size: 220% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.inline-form, .response-editor {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}

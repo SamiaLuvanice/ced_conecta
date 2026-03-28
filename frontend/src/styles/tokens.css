@@ -1,0 +1,9 @@
+:root {
+  font-family: 'Sora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #152033;
+  background: #f7fafb;
+  --grad-hot: #f94600;
+  --grad-sun: #fd7d00;
+  --grad-ocean: #4dbec1;
+  --grad-green: #20ab45;
+}
