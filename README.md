@@ -60,7 +60,7 @@ ced_conecta/
 └── README.md
 ```
 
-## Variaveis de ambiente
+## Variáveis de ambiente
 
 Copie os arquivos de exemplo antes de executar:
 
@@ -106,18 +106,18 @@ Na raiz do projeto:
 docker compose up --build
 ```
 
-### Modo demo temporario
+### Modo demo temporário
 
-O `docker-compose.yml` deste repositorio esta configurado para ambiente de demonstracao (`APP_ENV=demo`).
-Nesse modo, o backend reidrata dados iniciais automaticamente na subida (seed), para facilitar avaliacao funcional rapida.
+O `docker-compose.yml` deste repositório está configurado para ambiente de demonstração (`APP_ENV=demo`).
+Nesse modo, o backend reidrata dados iniciais automaticamente na subida (seed), para facilitar avaliação funcional rápida.
 
 Importante:
 
-- dados excluidos ou alterados manualmente podem voltar apos reinicio/update dos containers
-- este modo nao promete persistencia real de dados
-- use apenas para demo temporaria
+- dados excluídos ou alterados manualmente podem voltar após reinício/update dos containers
+- este modo não promete persistência real de dados
+- use apenas para demo temporária
 
-Se quiser executar sem reidratacao automatica, remova `APP_ENV=demo` do servico `backend` e rode seed manualmente quando necessario:
+Se quiser executar sem reidratação automática, remova `APP_ENV=demo` do serviço `backend` e rode seed manualmente quando necessário:
 
 ```bash
 docker compose exec backend python manage.py seed_data
@@ -142,7 +142,7 @@ Serviços expostos:
 
 ## Endpoints principais
 
-Observacao: todos os endpoints (exceto /auth/login e /auth/refresh) exigem token Bearer JWT.
+Observação: todos os endpoints (exceto /auth/login e /auth/refresh) exigem token Bearer JWT.
 
 - POST /auth/login
 - POST /auth/refresh
