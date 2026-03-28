@@ -76,18 +76,18 @@ export default function ProfessorTurmaDetalhePage() {
               <p className="muted">Nenhum aluno vinculado a esta turma.</p>
             ) : (
               <div className="table-wrap">
-                <table className="activities-table">
+                <table className="activities-table mobile-card-table">
                   <thead>
                     <tr>
-                      <th style={{ width: 56, textAlign: 'center' }}>#</th>
+                      <th className="count-column">#</th>
                       <th>Aluno</th>
                     </tr>
                   </thead>
                   <tbody>
                     {alunosOrdenados.map((aluno, index) => (
                       <tr key={aluno.id}>
-                        <td style={{ textAlign: 'center' }}>{index + 1}</td>
-                        <td style={{ textAlign: 'left' }}>{aluno.nome}</td>
+                        <td className="count-column" data-label="#">{index + 1}</td>
+                        <td data-label="Aluno">{aluno.nome}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -102,26 +102,26 @@ export default function ProfessorTurmaDetalhePage() {
               <p className="muted">Nenhuma atividade inserida nesta turma.</p>
             ) : (
               <div className="table-wrap">
-                <table className="activities-table">
+                <table className="activities-table mobile-card-table">
                   <thead>
                     <tr>
                       <th>Atividade</th>
                       <th>Entrega</th>
-                      <th style={{ textAlign: 'center' }}>Recebidas</th>
-                      <th style={{ textAlign: 'center' }}>Faltam receber</th>
+                      <th className="count-column">Recebidas</th>
+                      <th className="count-column">Faltam receber</th>
                     </tr>
                   </thead>
                   <tbody>
                     {atividadesComPendentes.map((atividade) => (
                       <tr key={atividade.id}>
-                        <td>
+                        <td data-label="Atividade">
                           <Link className="table-title-link" to={`/professor/atividades/${atividade.id}`}>
                             {atividade.titulo}
                           </Link>
                         </td>
-                        <td>{new Date(atividade.data_entrega).toLocaleDateString('pt-BR')}</td>
-                        <td style={{ textAlign: 'center' }}>{atividade.total_respostas || 0}</td>
-                        <td style={{ textAlign: 'center' }}>{atividade.faltamReceber}</td>
+                        <td data-label="Entrega">{new Date(atividade.data_entrega).toLocaleDateString('pt-BR')}</td>
+                        <td className="count-column" data-label="Recebidas">{atividade.total_respostas || 0}</td>
+                        <td className="count-column" data-label="Faltam receber">{atividade.faltamReceber}</td>
                       </tr>
                     ))}
                   </tbody>

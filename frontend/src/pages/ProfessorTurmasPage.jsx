@@ -58,26 +58,26 @@ export default function ProfessorTurmasPage() {
 
       {!loading && turmas.length ? (
         <div className="table-wrap">
-          <table className="activities-table">
+          <table className="activities-table mobile-card-table professor-turmas-table">
             <thead>
               <tr>
                 <th>Turma</th>
                 <th>Matéria</th>
-                <th style={{ textAlign: 'center' }}>Alunos</th>
-                <th style={{ textAlign: 'center' }}>Atividades</th>
+                <th className="count-column">Alunos</th>
+                <th className="count-column">Atividades</th>
               </tr>
             </thead>
             <tbody>
               {turmas.map((turma) => (
                 <tr key={turma.id}>
-                  <td>
+                  <td data-label="Turma">
                     <Link className="table-title-link" to={`/professor/turmas/${turma.id}`}>
                       {turma.nome}
                     </Link>
                   </td>
-                  <td>{turma.descricao}</td>
-                  <td style={{ textAlign: 'center' }}>{turma.alunos_count || 0}</td>
-                  <td style={{ textAlign: 'center' }}>{turma.totalAtividades}</td>
+                  <td data-label="Matéria">{turma.descricao}</td>
+                  <td className="count-column" data-label="Alunos">{turma.alunos_count || 0}</td>
+                  <td className="count-column" data-label="Atividades">{turma.totalAtividades}</td>
                 </tr>
               ))}
             </tbody>

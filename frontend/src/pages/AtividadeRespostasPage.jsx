@@ -39,7 +39,7 @@ export default function AtividadeRespostasPage() {
 
       {respostas.length ? (
         <div className="table-wrap">
-          <table className="activities-table">
+          <table className="activities-table mobile-card-table">
             <thead>
               <tr>
                 <th>Aluno</th>
@@ -54,21 +54,21 @@ export default function AtividadeRespostasPage() {
                 const status = obterStatusResposta(resposta)
                 return (
                   <tr key={resposta.id}>
-                    <td>
+                    <td data-label="Aluno">
                       <Link className="table-title-link" to={`/professor/atividades/${id}/respostas/${resposta.id}`}>
                         {resposta.aluno_nome || '-'}
                       </Link>
                     </td>
-                    <td>{new Date(resposta.enviada_em).toLocaleString('pt-BR')}</td>
-                    <td className="status-column">
+                    <td data-label="Enviada em">{new Date(resposta.enviada_em).toLocaleString('pt-BR')}</td>
+                    <td className="status-column" data-label="Nota">
                       {resposta.nota !== null && resposta.nota !== undefined
                         ? String(resposta.nota).replace('.', ',')
                         : '-'}
                     </td>
-                    <td className="status-column">
+                    <td className="status-column" data-label="Status">
                       <span className={`badge ${status.className}`}>{status.label}</span>
                     </td>
-                    <td className="status-column">
+                    <td className="status-column" data-label="Ação">
                       <Link className="secondary-link" to={`/professor/atividades/${id}/respostas/${resposta.id}`}>
                         Ver resposta
                       </Link>

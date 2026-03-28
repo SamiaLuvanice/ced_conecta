@@ -36,7 +36,7 @@ export default function AlunoAtividadesPage() {
       ) : null}
 
       <div className="table-wrap">
-        <table className="activities-table">
+        <table className="activities-table mobile-card-table aluno-activities-table">
           <thead>
             <tr>
               <th>Título da atividade</th>
@@ -51,14 +51,14 @@ export default function AlunoAtividadesPage() {
 
               return (
                 <tr key={atividade.id}>
-                  <td>
+                  <td data-label="Título da atividade">
                     <Link className="table-title-link" to={`/aluno/atividades/${atividade.id}`}>
                       {atividade.titulo}
                     </Link>
                   </td>
-                  <td>{atividade.professor_nome || 'Professor(a)'}</td>
-                  <td>{new Date(atividade.data_entrega).toLocaleDateString('pt-BR')}</td>
-                  <td className="status-column">
+                  <td data-label="Professor">{atividade.professor_nome || 'Professor(a)'}</td>
+                  <td data-label="Data de entrega">{new Date(atividade.data_entrega).toLocaleDateString('pt-BR')}</td>
+                  <td className="status-column" data-label="Status">
                     <span className={`badge ${statusResposta.className}`}>{statusResposta.label}</span>
                   </td>
                 </tr>

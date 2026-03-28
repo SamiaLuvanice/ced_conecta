@@ -53,27 +53,21 @@ Objetivo principal:
 ## Estrutura do repositório
 
 ```text
-ced-conecta/
+ced_conecta/
 ├── backend/
-│   └── .env.example
 ├── frontend/
-│   └── .env.example
 ├── docker-compose.yml
 └── README.md
 ```
 
-### Como preparar no ambiente local
+## Variaveis de ambiente
 
-1. Copie os exemplos para arquivos locais:
+Copie os arquivos de exemplo antes de executar:
 
 ```bash
 cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
 ```
-
-2. Ajuste os valores conforme seu ambiente.
-
-Observação: os arquivos `.env` reais ficam fora do versionamento (veja `.gitignore`).
 
 ## Como executar sem Docker
 
@@ -112,6 +106,23 @@ Na raiz do projeto:
 docker compose up --build
 ```
 
+### Modo demo temporario
+
+O `docker-compose.yml` deste repositorio esta configurado para ambiente de demonstracao (`APP_ENV=demo`).
+Nesse modo, o backend reidrata dados iniciais automaticamente na subida (seed), para facilitar avaliacao funcional rapida.
+
+Importante:
+
+- dados excluidos ou alterados manualmente podem voltar apos reinicio/update dos containers
+- este modo nao promete persistencia real de dados
+- use apenas para demo temporaria
+
+Se quiser executar sem reidratacao automatica, remova `APP_ENV=demo` do servico `backend` e rode seed manualmente quando necessario:
+
+```bash
+docker compose exec backend python manage.py seed_data
+```
+
 Serviços expostos:
 
 - backend: http://localhost:8000
@@ -131,9 +142,17 @@ Serviços expostos:
 
 ## Endpoints principais
 
+Observacao: todos os endpoints (exceto /auth/login e /auth/refresh) exigem token Bearer JWT.
+
 - POST /auth/login
+- POST /auth/refresh
 - GET /me/atividades
+- GET /me/turmas
+- GET /turmas
 - POST /atividades
+- GET /atividades/{id}
+- PUT/PATCH /atividades/{id}
+- DELETE /atividades/{id}
 - POST /respostas
 - GET /me/respostas
 - GET /atividades/{id}/respostas/
