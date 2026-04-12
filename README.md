@@ -1,8 +1,8 @@
-# Ced Conecta
+# EduConnect
 
 Conectando professores e alunos em um fluxo simples de criação, entrega e correção de atividades.
 
-Ced Conecta é uma plataforma web educacional para gerenciamento de atividades entre professores e alunos. O projeto foi pensado como um MVP funcional para apoiar o ciclo completo de atividades escolares: criação, envio de respostas, correção e devolutiva.
+EduConnect é uma plataforma web educacional para gerenciamento de atividades entre professores e alunos. O projeto foi pensado como um MVP funcional para apoiar o ciclo completo de atividades escolares: criação, envio de respostas, correção e devolutiva.
 
 ## Proposta do projeto
 
@@ -53,7 +53,7 @@ Objetivo principal:
 ## Estrutura do repositório
 
 ```text
-ced_conecta/
+EduConnect/
 ├── backend/
 ├── frontend/
 ├── docker-compose.yml
@@ -132,12 +132,12 @@ Serviços expostos:
 
 ### Professor
 
-- e-mail: maxwell@cedconecta.com
+- e-mail: maxwell@educonnect.com
 - senha: 123456
 
 ### Aluna
 
-- e-mail: vagna@cedconecta.com
+- e-mail: vagna@educonnect.com
 - senha: 123456
 
 ## Endpoints principais

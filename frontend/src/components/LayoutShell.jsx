@@ -59,7 +59,7 @@ export default function LayoutShell({ title, children }) {
                 <circle cx="12" cy="19" r="1.5" fill="white" />
               </svg>
             </span>
-            <h1>Ced Conecta</h1>
+            <h1>EduConnect</h1>
           </div>
           <p className="muted">{user?.nome}</p>
           <span className="badge profile">{user?.perfil}</span>

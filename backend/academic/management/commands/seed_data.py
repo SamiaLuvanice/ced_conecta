@@ -7,7 +7,7 @@ from academic.models import Turma, Atividade, Resposta
 User = get_user_model()
 
 class Command(BaseCommand):
-    help = 'Cria dados iniciais para o Ced Conecta.'
+    help = 'Cria dados iniciais para o EduConnect.'
 
     def handle(self, *args, **options):
         turmas_seed = [
@@ -26,23 +26,23 @@ class Command(BaseCommand):
             )
             turmas.append(turma)
 
-        professor, created = User.objects.get_or_create(
-            email='maxwell@cedconecta.com',
+        professor, _ = User.objects.update_or_create(
+            username='maxwell.professor',
             defaults={
-                'username': 'maxwell.professor',
+                'email': 'maxwell@educonnect.com',
                 'nome': 'Maxwell Alves Teixeira',
                 'perfil': 'PROFESSOR',
                 'is_staff': True,
             }
         )
-        if created or not professor.check_password('123456'):
+        if not professor.check_password('123456'):
             professor.set_password('123456')
-            professor.save()
+            professor.save(update_fields=['password'])
 
-        aluno, created = User.objects.get_or_create(
-            email='vagna@cedconecta.com',
+        aluno, _ = User.objects.update_or_create(
+            username='vagna.lima',
             defaults={
-                'username': 'vagna.lima',
+                'email': 'vagna@educonnect.com',
                 'nome': 'Vagna Brito de Lima',
                 'perfil': 'ALUNO',
                 'turma': turmas[0],
@@ -50,7 +50,7 @@ class Command(BaseCommand):
         )
         if aluno.turma_id != turmas[0].id:
             aluno.turma = turmas[0]
-        if created or not aluno.check_password('123456'):
+        if not aluno.check_password('123456'):
             aluno.set_password('123456')
         aluno.save()
 
@@ -62,12 +62,13 @@ class Command(BaseCommand):
             for posicao in range(1, alunos_faltantes + 1):
                 sequencia = total_alunos_turma + posicao
                 codigo_turma = turma.codigo.lower().replace('-', '').replace(' ', '')
-                email_aluno = f'aluno.{codigo_turma}.{sequencia}@cedconecta.com'
+                username_aluno = f'aluno.{codigo_turma}.{sequencia}'
+                email_aluno = f'{username_aluno}@educonnect.com'
 
-                aluno_turma, created = User.objects.get_or_create(
-                    email=email_aluno,
+                aluno_turma, _ = User.objects.update_or_create(
+                    username=username_aluno,
                     defaults={
-                        'username': f'aluno.{codigo_turma}.{sequencia}',
+                        'email': email_aluno,
                         'nome': f'Aluno {turma.nome} {sequencia}',
                         'perfil': 'ALUNO',
                         'turma': turma,
@@ -76,7 +77,7 @@ class Command(BaseCommand):
 
                 if aluno_turma.turma_id != turma.id:
                     aluno_turma.turma = turma
-                if created or not aluno_turma.check_password('123456'):
+                if not aluno_turma.check_password('123456'):
                     aluno_turma.set_password('123456')
                 aluno_turma.save()
 
@@ -136,7 +137,7 @@ class Command(BaseCommand):
             alunos_disponiveis = [
                 aluno_turma
                 for aluno_turma in alunos_turma
-                if aluno_turma.id not in alunos_que_ja_responderam and aluno_turma.email != 'vagna@cedconecta.com'
+                if aluno_turma.id not in alunos_que_ja_responderam and aluno_turma.email != 'vagna@educonnect.com'
             ]
             respostas_faltantes = max(respostas_minimas_por_atividade - total_respostas_existentes, 0)
 

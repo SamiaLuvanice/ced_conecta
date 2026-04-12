@@ -36,7 +36,7 @@ export default function LoginPage() {
             </svg>
           </span>
           <div className="login-brand-text">
-            <h1>Ced Conecta</h1>
+            <h1>EduConnect</h1>
             <p className="login-slogan">Ensinar, aprender e evoluir em conexão.</p>
           </div>
         </div>
@@ -53,8 +53,8 @@ export default function LoginPage() {
         <button type="submit" disabled={loading}>{loading ? 'Entrando...' : 'Entrar'}</button>
         <div className="demo-box">
           <strong>Contas de teste</strong>
-          <span>Professor: maxwell@cedconecta.com / 123456</span>
-          <span>Aluna: vagna@cedconecta.com / 123456</span>
+          <span>Professor: maxwell@educonnect.com / 123456</span>
+          <span>Aluna: vagna@educonnect.com / 123456</span>
         </div>
       </form>
     </div>

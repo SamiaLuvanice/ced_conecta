@@ -1,7 +1,7 @@
 services:
   backend:
     build: ./backend
-    container_name: ced-conecta-backend
+    container_name: educonnect-backend
     environment:
       - APP_ENV=demo
     ports:
@@ -11,7 +11,7 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: ced-conecta-frontend
+    container_name: educonnect-frontend
     ports:
       - "5173:5173"
     environment:

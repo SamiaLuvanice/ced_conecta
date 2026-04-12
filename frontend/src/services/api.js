@@ -5,7 +5,7 @@ const api = axios.create({
 })
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('cedconecta_access')
+  const token = localStorage.getItem('educonnect_access')
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
